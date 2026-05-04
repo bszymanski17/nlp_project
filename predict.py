@@ -6,7 +6,7 @@ from src.utils import load_config, get_logger
 from src.pipeline.preprocessing import SalaryPreprocessor
 from src.models.self_tought_net import SalaryDataset, SalaryPredictionModel
 
-logger = get_logger("Inference")
+logger = get_logger("Prediction")
 
 def run_batch_prediction():
     try:
@@ -37,23 +37,20 @@ def run_batch_prediction():
 
         logger.info("Calculating predictions...")
         with torch.no_grad():
-            # Model outputs log-salary
             predictions_log = model(x_cat_tensor, x_text_tensor)
         
-
-        logger.info("Applying exponential transformation (expm1)...")
         predictions_real = np.expm1(predictions_log.numpy()).flatten()
-
-        # Save results
         df['Predicted_Salary'] = predictions_real
+
+
         output_path = config['paths']['prediction_results']
         df.to_csv(output_path, index=False)
         
-        logger.info(f"DONE! Results saved to: {output_path}")
-        logger.info(f"Average predicted salary: £{predictions_real.mean():,.2f}")
+        logger.info(f"Results saved to: {output_path}")
+        logger.info(f"Average predicted salary: {predictions_real.mean():,.2f}")
 
     except Exception as e:
-        logger.error(f"Inference failed: {e}")
+        logger.error(f"Prediction failed: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

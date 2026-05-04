@@ -17,7 +17,7 @@ def load_config(config_path="config.yaml"):
 
 def get_logger(name):
     """
-    Creating logger.
+    Creating logger
     """
     logger = logging.getLogger(name)
     

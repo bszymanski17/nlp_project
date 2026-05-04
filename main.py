@@ -5,7 +5,6 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 import numpy as np
 
-# Import our custom modules
 from src.utils import load_config, get_logger, ensure_dir
 from src.pipeline.preprocessing import SalaryPreprocessor
 from src.models.self_tought_net import SalaryDataset, SalaryPredictionModel
@@ -34,7 +33,6 @@ def main():
     x_cat_train, x_text_train = preprocessor.transform(train_df)
     x_cat_val, x_text_val = preprocessor.transform(val_df)
     
-    # Save preprocessor for later use in prediction
     preprocessor.save(config['paths']['preprocessor_save'])
 
     # Prepare DataLoaders
@@ -53,7 +51,7 @@ def main():
     logger.info("Starting training...")
     trained_model = train_model(model, train_loader, val_loader, config, device)
 
-    logger.info("Project workflow completed successfully!")
+    logger.info("Training completed successfully.")
 
 if __name__ == "__main__":
     main()

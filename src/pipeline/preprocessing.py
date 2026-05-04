@@ -8,7 +8,7 @@ logger = get_logger("Preprocessing")
 
 class SalaryPreprocessor:
     """
-    Handles data cleaning, dictionary building, and data transformation.
+    Data cleaning, dictionary building, and data transformation.
     """
     def __init__(self, config):
         self.config = config
@@ -18,7 +18,6 @@ class SalaryPreprocessor:
         self.is_fitted = False
 
     def fit(self, df):
-        """Builds mapping dictionaries for categorical and text data."""
         logger.info("Preparing categorical and text features...")
 
         # 1. Categorical features
@@ -32,7 +31,6 @@ class SalaryPreprocessor:
         # 2. Text Vocabulary
         text_col = self.config['data']['text_features'][0]
         tokens = []
-        logger.info("Tokenizing text and vocabulary building...")
         for text in df[text_col]:
             tokens.extend(nltk.word_tokenize(str(text).lower()))
 
@@ -44,12 +42,11 @@ class SalaryPreprocessor:
         self.word_to_id['<PAD>'] = 0
         self.word_to_id['<UNK>'] = 1
 
-        logger.info(f"Vocabulary created. Total words: {len(self.word_to_id)}")
+        logger.debug(f"Vocabulary created. Total words: {len(self.word_to_id)}")
         self.is_fitted = True
         return self
 
     def transform(self, df):
-        """Converts raw data into tensors/numerical sequences."""
         if not self.is_fitted:
             logger.error("Transformation attempted before fitting!")
             raise ValueError("Preprocessor must be fitted before transformation.")
@@ -82,11 +79,11 @@ class SalaryPreprocessor:
         return df_transformed, sequences
 
     def save(self, path):
-        """Serializes the fitted preprocessor to a file."""
+        """Save the fitted preprocessor to a file."""
         joblib.dump(self, path)
         logger.info(f"Preprocessor artifacts saved to: {path}")
 
     @staticmethod
     def load(path):
-        """Loads a serialized preprocessor from a file."""
+        """Loads a preprocessor from a file."""
         return joblib.load(path)

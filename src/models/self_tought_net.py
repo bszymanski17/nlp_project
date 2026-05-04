@@ -6,7 +6,8 @@ class SalaryDataset(Dataset):
     def __init__(self, cat_data, text_data, y=None):
         self.cat_features = torch.tensor(cat_data.values, dtype=torch.long)
         self.text_features = torch.tensor(text_data, dtype=torch.long)
-        # If target exists (training phase), store it. Otherwise (prediction), it's None.
+
+        # If target exists (training), store it. Otherwise (prediction), it's none.
         self.y = torch.tensor(y.values.reshape(-1, 1), dtype=torch.float32) if y is not None else None
 
     def __len__(self):
