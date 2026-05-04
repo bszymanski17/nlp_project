@@ -8,19 +8,19 @@ The project follows a modular architecture, separating the configuration, data p
 
 ```text
 NLP_PROJECT/
-├── artifacts/               # Saved model weights (.pth) and preprocessor state (.pkl)
-├── data/                    # Raw training data and inference inputs/outputs
-├── src/                     # Core logic modules
+├── artifacts/                   # Saved model weights (.pth) and preprocessor state (.pkl)
+├── data/                        # Raw training data and inference inputs/outputs
+├── src/                         # Core logic modules
 │   ├── models/
-│   │   └── self_taught_net.py # PyTorch Dataset and Neural Network architecture
+│   │   └── self_taught_net.py   # PyTorch Dataset and Neural Network architecture
 │   ├── pipeline/
-│   │   ├── operations.py      # Training loop, evaluation, and MLflow logging
-│   │   └── preprocessing.py   # Text/categorical transformation and vocabulary building
-│   └── utils.py             # Helper functions (custom logging, YAML config loader)
-├── .gitignore               # Git exclusion rules
-├── config.yaml              # Centralized configuration (paths, architecture)
-├── main.py                  # Entry point for training the model
-├── predict.py               # Entry point for batch inference on new data
-├── documentation/           # Project analysis and documentation
-│   ├── documentation.txt    # Key observations from experiments
-└── requirements.txt         # Project dependencies
+│   │   ├── operations.py        # Training loop, evaluation, and MLflow logging
+│   │   └── preprocessing.py     # Text/categorical transformation and vocabulary building
+│   └── utils.py                 # Helper functions (custom logging, YAML config loader)
+├── .gitignore                   # Git exclusion rules
+├── config.yaml                  # Centralized configuration (paths, architecture)
+├── main.py                      # Entry point for training the model
+├── predict.py                   # Entry point for batch inference on new data
+├── documentation/               # Project analysis and documentation
+│   ├── documentation.txt        # Key observations from experiments
+└── requirements.txt             # Project dependencies
