@@ -11,6 +11,7 @@ preprocessing:
 model:
   emb_dim_text: 64
   emb_dim_cat: 16
+  layers_size: [128, 64, 16]
 
 training:
   batch_size: 64

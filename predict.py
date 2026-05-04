@@ -4,7 +4,7 @@ import numpy as np
 import sys
 from src.utils import load_config, get_logger
 from src.pipeline.preprocessing import SalaryPreprocessor
-from src.models.self_tought_net import SalaryDataset, SalaryPredictionModel
+from src.models.self_tought_net import SalaryPredictionModel
 
 logger = get_logger("Prediction")
 

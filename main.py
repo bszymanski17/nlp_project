@@ -7,7 +7,8 @@ import numpy as np
 
 from src.utils import load_config, get_logger, ensure_dir
 from src.pipeline.preprocessing import SalaryPreprocessor
-from src.models.self_tought_net import SalaryDataset, SalaryPredictionModel
+from src.models.self_tought_net import SalaryPredictionModel
+from src.models.dataset import SalaryDataset
 from src.pipeline.operations import train_model
 
 def main():
