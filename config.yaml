@@ -1,0 +1,25 @@
+data:
+  path: "data/Train_rev1.csv"
+  cat_features: ["Category", "Company", "LocationNormalized", "ContractType", "ContractTime"]
+  text_features: ["FullDescription"]
+  target: "SalaryNormalized"
+
+preprocessing:
+  max_len: 300
+  min_freq: 10
+
+model:
+  emb_dim_text: 64
+  emb_dim_cat: 16
+
+training:
+  batch_size: 64
+  epochs: 15
+  patience: 4
+  random_state: 123
+
+paths:
+  artifacts_dir: "artifacts"
+  model_save: "artifacts/self_taught_model.pth"
+  preprocessor_save: "artifacts/preprocessor.pkl"
+  prediction_results: "data/predictions_results.csv"
