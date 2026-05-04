@@ -23,7 +23,7 @@ We evaluated the models on the Test Set using RMSLE (Root Mean Squared Logarithm
 3. Basic Self-taught (RMSLE: 0.074)
 
 **Statistical Tests:**
-* We ran a Friedman Chi-Square test. The p-value was 0.0000, which means there is a significant difference between all models.
+* We ran a Friedman Chi-Square test. The p-value was 0, which means there is a significant difference between all models.
 * We then ran a Nemenyi post-hoc test to compare the top models. The test showed **no statistically significant difference** between the top 3 models.
 
 ## 4. Final Model Selection
