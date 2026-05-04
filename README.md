@@ -21,4 +21,6 @@ NLP_PROJECT/
 ├── config.yaml              # Centralized configuration (paths, architecture)
 ├── main.py                  # Entry point for training the model
 ├── predict.py               # Entry point for batch inference on new data
+├── documentation/           # Project analysis and documentation
+│   ├── documentation.txt    # Key observations from experiments
 └── requirements.txt         # Project dependencies
