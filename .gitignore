@@ -4,3 +4,4 @@ __pycache__/
 .ipynb_checkpoints/Train_rev1.csv
 data/
 mlflow.db
+mlruns/0/
