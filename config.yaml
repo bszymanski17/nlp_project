@@ -19,7 +19,15 @@ training:
   patience: 4
   random_state: 123
 
+mlflow:
+  experiment_name: "Salary_predictions"
+  tracking_uri: "sqlite:///mlflow.db"
+  run_id: '9001ef40716446d9b9b9a7e327c2ba92'
+  model_name: 'salary_model'
+
 paths:
+  input_data_train: "data/Train_rev1.csv"
+  input_data_pred: "data/Train_rev1.csv"
   artifacts_dir: "artifacts"
   model_save: "artifacts/self_taught_model.pth"
   preprocessor_save: "artifacts/preprocessor.pkl"

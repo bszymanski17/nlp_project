@@ -6,10 +6,10 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 from src.utils import load_config, get_logger, ensure_dir
-from src.pipeline.preprocessing import SalaryPreprocessor
+from src.processing.preprocessing import SalaryPreprocessor
 from src.models.self_tought_net import SalaryPredictionModel
-from src.models.dataset import SalaryDataset
-from src.pipeline.operations import train_model
+from src.models.salary_dataset import SalaryDataset
+from src.processing.operations import train_model, transform_data
 
 def main():
     logger = get_logger("Main")
@@ -23,16 +23,15 @@ def main():
     
     logger.info(f"Using device: {device}")
 
-    logger.info(f"Loading data from {config['data']['path']}...")
-    df = pd.read_csv(config['data']['path']) 
+    logger.info(f"Loading data from {config['paths']['input_data_train']}...")
+    df = pd.read_csv(config['paths']['input_data_train']) 
     
     train_df, val_df = train_test_split(df, test_size=0.2, random_state=config['training']['random_state'])
 
     preprocessor = SalaryPreprocessor(config)
     preprocessor.fit(train_df)
     
-    x_cat_train, x_text_train = preprocessor.transform(train_df)
-    x_cat_val, x_text_val = preprocessor.transform(val_df)
+    x_cat_train, x_text_train, x_cat_val, x_text_val = transform_data(train_df, val_df, preprocessor)
     
     preprocessor.save(config['paths']['preprocessor_save'])
 
@@ -51,8 +50,6 @@ def main():
 
     logger.info("Starting training...")
     trained_model = train_model(model, train_loader, val_loader, config, device)
-
-    logger.info("Training completed successfully.")
 
 if __name__ == "__main__":
     main()

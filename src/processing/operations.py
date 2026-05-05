@@ -5,12 +5,17 @@ import numpy as np
 from tqdm import tqdm
 from src.utils import get_logger
 
+
 logger = get_logger("Operations")
 
 def train_model(model, train_loader, val_loader, config, device):
     """
     Main training loop.
     """
+
+    mlflow.set_tracking_uri(config['mlflow']['tracking_uri'])
+    mlflow.set_experiment(config['mlflow']['experiment_name'])
+
     criterion = nn.MSELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     
@@ -21,7 +26,7 @@ def train_model(model, train_loader, val_loader, config, device):
 
     logger.info(f"Starting training for {epochs} epochs on device: {device}")
 
-    with mlflow.start_run():
+    with mlflow.start_run() as run:
         mlflow.log_params(config['training'])
         mlflow.log_params(config['model'])
 
@@ -71,8 +76,17 @@ def train_model(model, train_loader, val_loader, config, device):
                 if counter >= patience:
                     logger.warning(f"Early stopping triggered after {epoch+1} epochs.")
                     break
-
+        
+        model.load_state_dict(torch.load(config['paths']['model_save']))
         mlflow.log_artifact(config['paths']['model_save'])
-        logger.info("Training complete. Best model and metrics logged to MLflow.")
+        model_name = config['mlflow'].get('model_name', 'model')
+        mlflow.pytorch.log_model(pytorch_model=model, name=model_name, serialization_format="pickle")
+        logger.info(f"Training complete. Best model and metrics logged to MLflow. MLflow run id: {run.info.run_id}.")
 
     return model
+
+
+def transform_data(train_df, val_df, preprocessor):
+    x_cat_train, x_text_train = preprocessor.transform(train_df)
+    x_cat_val, x_text_val = preprocessor.transform(val_df)
+    return x_cat_train, x_text_train, x_cat_val, x_text_val

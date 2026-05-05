@@ -5,3 +5,4 @@ __pycache__/
 data/
 mlflow.db
 mlruns/0/
+mlruns/

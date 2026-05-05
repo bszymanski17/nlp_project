@@ -20,6 +20,8 @@ def get_logger(name):
     Creating logger
     """
     logger = logging.getLogger(name)
+    logger.propagate = False
+    
     
     if not logger.handlers:
         logger.setLevel(logging.DEBUG) 
