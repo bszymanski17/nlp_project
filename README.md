@@ -24,3 +24,46 @@ NLP_PROJECT/
 ├── documentation/               # Project analysis and documentation
 │   ├── documentation.txt        # Key observations from experiments
 └── requirements.txt             # Project dependencies
+```
+
+## 🚀 How to Run the Project
+
+### 1. Installation
+Install the required dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Configuration (Before Training)
+Open config.yaml to adjust your settings before starting the training:
+
+- Set data paths: Feature and target column definitions.
+
+- Model architecture: Adjust parameters like layers_size and training hyperparameters (epochs, batch_size).
+
+- MLflow Settings: Ensure tracking_uri is set to sqlite:///mlflow.db for stable logging and database consistency.
+
+3. Training
+Run the training script. The system will automatically log metrics and save the best model. Once finished, copy the run_id displayed in the console.
+
+```bash
+python3 main.py
+```
+
+4. Setup for Prediction
+Go back to config.yaml and paste the copied ID into the run_id field to tell the system which model version to use:
+
+```YAML
+mlflow:
+  run_id: "YOUR_COPIED_ID_HERE"
+```
+
+5. Prediction
+Run the prediction script to generate results based on the selected model:
+
+```bash
+python3 predict.py
+```
+
+
