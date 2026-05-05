@@ -22,11 +22,11 @@ NLP_PROJECT/
 │   └── utils.py                 # Helper functions (custom logging, YAML config loader)
 ├── .gitignore                   # Git exclusion rules
 ├── config.yaml                  # Centralized configuration (paths, architecture)
-├── documentation/               # Project analysis, observations and documentation
-│   ├── documentation.txt        
+├── documentation/               
+│   ├── documentation.txt        # Project analysis and observations 
 └── requirements.txt             # Project dependencies
-├── notebook/                    # Jupyter notebooks for model experimentation and analysis
-│   ├── notebook_experiments.ip  
+├── notebook/                    
+│   ├── notebook_experiments.ip  # Jupyter notebook for model experimentation and analysis
 └── requirements.txt             # Environment requirements
 ```
 
