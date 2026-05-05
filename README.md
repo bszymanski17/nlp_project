@@ -22,7 +22,7 @@ NLP_PROJECT/
 │   └── utils.py                 # Helper functions (custom logging, YAML config loader)
 ├── .gitignore                   # Git exclusion rules
 ├── config 
-│   ├── config.yaml                  # Centralized configuration (paths, architecture)
+│   ├── config.yaml              # Centralized configuration (paths, architecture)
 ├── documentation/               
 │   ├── documentation.txt        # Project analysis and observations 
 └── requirements.txt             # Project dependencies
