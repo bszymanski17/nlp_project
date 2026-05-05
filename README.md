@@ -21,7 +21,8 @@ NLP_PROJECT/
 │   │   └── preprocessing.py     # Text/categorical transformation and vocabulary building
 │   └── utils.py                 # Helper functions (custom logging, YAML config loader)
 ├── .gitignore                   # Git exclusion rules
-├── config.yaml                  # Centralized configuration (paths, architecture)
+├── config 
+│   ├── config.yaml                  # Centralized configuration (paths, architecture)
 ├── documentation/               
 │   ├── documentation.txt        # Project analysis and observations 
 └── requirements.txt             # Project dependencies
