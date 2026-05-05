@@ -14,7 +14,7 @@ def run_batch_prediction():
         config = load_config("config.yaml")
         device = torch.device("cpu") 
 
-        mlflow.set_tracking_uri(config['mlflow']['tracking_uri'])
+        mlflow.set_tracking_uri(config['paths']['tracking_uri'])
                 
         run_id = config['mlflow']['run_id']
         model_name = config['mlflow'].get('model_name', 'model')

@@ -13,7 +13,7 @@ def train_model(model, train_loader, val_loader, config, device):
     Main training loop.
     """
 
-    mlflow.set_tracking_uri(config['mlflow']['tracking_uri'])
+    mlflow.set_tracking_uri(config['paths']['tracking_uri'])
     mlflow.set_experiment(config['mlflow']['experiment_name'])
 
     criterion = nn.MSELoss()
