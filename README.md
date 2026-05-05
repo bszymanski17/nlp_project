@@ -8,6 +8,9 @@ The project follows a modular architecture, separating the configuration, data p
 
 ```text
 NLP_PROJECT/
+├── scripts/                     # Executable scripts for the training and prediction pipeline
+│   ├── main.py                  # Entry point for training the model
+│   ├── predict.py               # Entry point for data for prediction
 ├── artifacts/                   # Saved model weights (.pth) and preprocessor state (.pkl)
 ├── data/                        # Raw training data and inference inputs/outputs
 ├── src/                         # Core logic modules
@@ -19,11 +22,12 @@ NLP_PROJECT/
 │   └── utils.py                 # Helper functions (custom logging, YAML config loader)
 ├── .gitignore                   # Git exclusion rules
 ├── config.yaml                  # Centralized configuration (paths, architecture)
-├── main.py                      # Entry point for training the model
-├── predict.py                   # Entry point for batch inference on new data
 ├── documentation/               # Project analysis and documentation
 │   ├── documentation.txt        # Key observations from experiments
 └── requirements.txt             # Project dependencies
+├── notebook/                    # Jupyter notebooks for model experimentation and analysis
+│   ├── notebook_experiments.ip  # Jupyter notebook for model selection, tests and analysis
+└── requirements.txt             # Environment requirements
 ```
 
 ## How to Run the Project
@@ -42,7 +46,7 @@ Open config.yaml to adjust your settings before starting the training.
 Run the training script. The system will automatically log metrics and save the best model. Once finished, copy the run_id displayed in the console.
 
 ```bash
-python3 main.py
+python3 -m scripts.main
 ```
 
 ### 4. Setup for Prediction
@@ -57,7 +61,7 @@ mlflow:
 Run the prediction script to generate results based on the selected model:
 
 ```bash
-python3 predict.py
+python3 -m scripts.predict
 ```
 
 
