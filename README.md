@@ -35,14 +35,8 @@ Install the required dependencies using:
 pip install -r requirements.txt
 ```
 
-### 2. Configuration (Before Training)
-Open config.yaml to adjust your settings before starting the training:
-
-- Set data paths: Feature and target column definitions.
-
-- Model architecture: Adjust parameters like layers_size and training hyperparameters (epochs, batch_size).
-
-- MLflow Settings: Ensure tracking_uri is set to sqlite:///mlflow.db for stable logging and database consistency.
+### 2. Configuration
+Open config.yaml to adjust your settings before starting the training.
 
 ### 3. Training
 Run the training script. The system will automatically log metrics and save the best model. Once finished, copy the run_id displayed in the console.
