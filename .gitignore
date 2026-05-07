@@ -6,3 +6,4 @@ data/
 mlflow.db
 mlruns/0/
 mlruns/
+artifacts/
