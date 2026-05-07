@@ -40,17 +40,22 @@ Install the required dependencies using:
 pip install -r requirements.txt
 ```
 
-### 2. Configuration
+### 2. Download data
+Download the [Job Salary Prediction](https://www.kaggle.com/c/job-salary-prediction/data) dataset from Kaggle. 
+Place the `Train_rev1.csv` file inside the `data/` folder located in the root directory of the project.
+
+
+### 3. Configuration
 Open config.yaml to adjust your settings before starting the training.
 
-### 3. Training
+### 4. Training
 Run the training script. The system will automatically log metrics and save the best model. Once finished, copy the run_id displayed in the console.
 
 ```bash
 python3 -m scripts.main
 ```
 
-### 4. Setup for Prediction
+### 5. Setup for Prediction
 Go back to config.yaml and paste the copied ID into the run_id field to tell the system which model version to use:
 
 ```YAML
@@ -58,7 +63,7 @@ mlflow:
   run_id: "YOUR_COPIED_ID_HERE"
 ```
 
-### 5. Prediction
+### 6. Prediction
 Run the prediction script to generate results based on the selected model:
 
 ```bash
