@@ -46,7 +46,7 @@ Place the `Train_rev1.csv` file inside the `data/` folder located in the root di
 
 
 ### 3. Configuration
-Open config.yaml to adjust your settings before starting the training.
+Open config.yaml to adjust your settings and paths before starting the training.
 
 ### 4. Training
 Run the training script. The system will automatically log metrics and save the best model. Once finished, copy the run_id displayed in the console.
